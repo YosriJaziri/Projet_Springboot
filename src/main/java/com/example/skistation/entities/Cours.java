@@ -5,12 +5,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
+import java.util.List;
+
 @NoArgsConstructor
 @Getter
 @Setter
 
 @Entity
-public class Cours {
+public class Cours implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long numCours;
@@ -21,5 +24,7 @@ public class Cours {
     private Support support;
     private float prix;
     private int creneau;
+    @OneToMany(mappedBy = "cours")
+    private List<Inscription> inscris;
 
 }

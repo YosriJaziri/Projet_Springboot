@@ -5,11 +5,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
+import java.util.List;
+
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
-public class Piste {
+public class Piste implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long numPiste;
@@ -18,4 +21,6 @@ public class Piste {
     private Couleur couleur;
     private int longeur;
     private int pente;
+    @ManyToMany
+    private List<Skieur> skieurs;
 }
